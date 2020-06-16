@@ -1,0 +1,36 @@
+@import-normalize;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  margin: 0;
+}
+
+h1, h2, h3, h4, p, ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  max-width: 100%;
+}
+
+a:visited {
+  color: inherit;
+}
+
+img {
+  max-width: 100%; /* 1 */
+  height: auto;
+}

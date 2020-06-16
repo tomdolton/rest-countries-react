@@ -1,0 +1,49 @@
+@import "../global-styles.scss";
+
+.country {
+  background-color: $white;
+  color: $lm-text;
+
+  width: 100%;
+  max-width: 265px;
+  height: 335px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba($color: #000000,  $alpha: 0.2);
+  overflow: hidden;
+}
+
+.country__flag {
+  border-bottom: 1px solid #eee;
+  height: 170px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.country__text {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  p:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+
+.country__title {
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.country--dark {
+  background-color: $dm-elements;
+  color: $white;
+}
