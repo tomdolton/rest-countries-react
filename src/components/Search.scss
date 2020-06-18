@@ -1,0 +1,41 @@
+@import "../global-styles.scss";
+
+.search {
+  position: relative;
+  color: $lm-input;
+  margin-bottom: 2.5rem;
+}
+
+.search.dark {
+  .search__input {
+    color: $white;
+    background-color: $dm-elements;
+  }
+  ion-icon {
+    color: $white;
+  }
+}
+
+.search__input {
+  background-color: $white;
+  font-size: 0.75rem;
+
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 345px;
+  height: 50px;
+  padding-left: 4rem;
+  box-shadow: $box-shadow;
+
+  &:focus {
+    font-size: 0.9rem;
+  }
+}
+
+.search ion-icon {
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -1,0 +1,54 @@
+@import "../global-styles.scss";
+
+.dropdown {
+  font-size: 0.75rem;
+  box-shadow: $box-shadow;
+  width: 200px;
+  background-color: $white;
+  border-radius: 5px;
+  
+  position: relative;
+}
+
+.dropdown__label {
+  cursor: pointer;
+  display: block;
+  padding: 1rem 2.5rem;
+  margin-bottom: 5px;
+}
+
+.dropdown__options {
+  position: absolute;
+  background-color: $white;
+  width: 200px;
+  z-index: 1;
+  box-shadow: $box-shadow;
+  border-radius: 5px;
+}
+
+.dropdown__option {
+  cursor: pointer;
+  display: none;
+  padding: 1rem 2.5rem;
+
+  &:hover {
+    background-color: $lm-background;
+  }
+}
+
+.dropdown__option.is-open {
+  display: block;
+}
+
+.dropdown.dark {
+  color: $white;
+  background-color: $dm-elements;
+
+  & .dropdown__options {
+    background-color: $dm-elements;
+  }
+
+  & .dropdown__option:hover {
+    background-color: $lm-input;
+  }
+}

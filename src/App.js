@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import "./App.scss";
 
+import ThemeProvider from "./contexts/ThemeContext";
+
 import Header from './components/Header.js';
 import Home from './components/Home.js';
 import CountryView from './components/CountryView';
@@ -45,11 +47,13 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/:name" exact component={CountryView} />
-        </Switch>
+        <ThemeProvider>
+          <Header />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/:name" exact component={CountryView} />
+          </Switch>
+        </ThemeProvider>
       </div>
     </Router>
   );

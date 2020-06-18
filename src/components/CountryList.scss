@@ -1,0 +1,14 @@
+.country__list {
+
+}
+
+@media (min-width: 800px) {
+
+  .country__list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(auto, 265px));
+    justify-content: space-between;
+    column-gap: 20px;
+    row-gap: 75px;
+  }
+}

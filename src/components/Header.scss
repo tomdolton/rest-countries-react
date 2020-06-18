@@ -1,0 +1,38 @@
+@import "../global-styles.scss";
+
+.header {
+  @include container;
+  @include flex;
+
+  color: $lm-text;
+  background-color: $white;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-shadow: $box-shadow;
+}
+
+
+
+.header.dark {
+  color: $white;
+  background-color: $dm-elements;
+}
+
+.header__title {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.theme-btn {
+  @include flex;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 300;
+
+  ion-icon {
+    margin-right: 0.5rem;
+  }
+}
