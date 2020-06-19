@@ -1,0 +1,31 @@
+@import "../global-styles.scss";
+
+.loading {
+  @include flex($justify: center, $align: flex-start);
+  font-size: 0.9rem;
+  height: 100vh;
+  color: inherit;
+}
+
+.loading__icon {
+  width: 20px;
+  margin-right: 0.5rem;
+  animation: rotate360 1s infinite linear;
+
+  fill: $lm-text;
+  path { stroke: $lm-text; }
+}
+
+.loading.dark .loading__icon{
+  fill: $white;
+  path { stroke: $white; }
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}

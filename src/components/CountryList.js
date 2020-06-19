@@ -1,55 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from "../contexts/ThemeContext";
+import { CountriesContext } from "../contexts/CountriesContext";
 import Country from "./Country";
+import Loading from "./Loading";
 import "./CountryList.scss";
 
 const CountryList = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isFound, setIsFound] = useState(true);
-  const [countries, setCountries] = useState([]);
 
-
-
+  const { isDarkTheme } = useContext(ThemeContext);
+  const { filteredCountries, setShownCountry, isLoading } = useContext(CountriesContext);
 
   useEffect(() => {
-    fetchData();
-  }, []);
 
-  async function fetchData(category, query) {
-    if (!category) {
-      category = "all";
-      query = "";
-    } else {
-      category += "/";
-    }
-    const url = `https://restcountries.eu/rest/v2/${category}${query}?fields=name;population;region;capital;flag`;
-    const response = await fetch(url);
-    if (response.status >= 200 && response.status <= 299) {
-      const data = await response.json();
-      setCountries(data);
-      setIsLoading(false);
-      setIsFound(false);
-    } else {
-      // If no response, handle error
-      setIsFound(true);
-      console.log(response.status, response.statusText);
-    }
-  }
+  }, [filteredCountries]);
 
   return (
-    <div className="country__list">
+    <div className={`country__list ${isDarkTheme && "dark"}`}>
       {isLoading
-        ? <div>...loading</div>
-        : !isFound
-        && countries.map(country => {
+        ? <Loading />
+        : filteredCountries.map(country => {
           return (
-            <Link to={`/${country.name}`}>
+            <Link
+              to={`/${country.name}`}
+              key={country.numericCode}
+              onClick={() => {
+                setShownCountry(country)
+              }}>
               <Country
+                key={country.numericCode}
                 name={country.name}
-                population={country.population}
+                population={country.population.toLocaleString()}
                 region={country.region}
                 capital={country.capital}
-                flag={country.flag} />
+                flag={country.flag}
+              />
             </Link>
           )
         })}

@@ -1,24 +1,40 @@
 import React, { useState, useContext } from 'react';
+import { v4 as uuid } from "uuid";
 import { ThemeContext } from "../contexts/ThemeContext";
 import "./Dropdown.scss";
+import { CountriesContext } from '../contexts/CountriesContext';
 
 
 const Dropdown = (props) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [filterValue, setFilterValue] = useState("Filter by Region");
+
   const regions = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
   const { isDarkTheme } = useContext(ThemeContext);
+  const { allCountryData, setFilteredCountries, filterValue, setFilterValue } = useContext(CountriesContext);
+
+  // Triggers dropdown menu content
+  const handleLabelClick = () => setIsDropdownOpen(!isDropdownOpen);
+
 
   // Called each time user selects a region in the filter
-  const handleFilter = (e) => {
-    const region = e.target.innerText;
-    setFilterValue(region);
-    setIsDropdownOpen(!isDropdownOpen)
-    // Call fetch data to filter by region/{name} of region
-    // fetchData("region", region); TODO - get this through context
-  }
+  const handleOptionClick = (e) => {
 
-  const handleLabelClick = () => setIsDropdownOpen(!isDropdownOpen);
+    const region = e.target.innerText;
+
+    setIsDropdownOpen(!isDropdownOpen)
+    if (region === "All") {
+      setFilteredCountries(allCountryData);
+      setFilterValue("Filter by Region");
+      return;
+    }
+    else {
+      const foundCountries = allCountryData.filter(country => {
+        return country.region === region;
+      });
+      setFilteredCountries(foundCountries);
+      setFilterValue(region);
+    }
+  }
 
 
   return (
@@ -28,8 +44,9 @@ const Dropdown = (props) => {
         {regions.map(region => {
           return (
             <div
+              key={uuid()}
               className={`dropdown__option ${isDropdownOpen && "is-open"}`}
-              onClick={handleFilter}
+              onClick={handleOptionClick}
               value={region}>{region}
             </div>
           )

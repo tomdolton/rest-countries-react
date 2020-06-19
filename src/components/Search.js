@@ -1,20 +1,26 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { ThemeContext } from "../contexts/ThemeContext";
 
 import "./Search.scss";
+import { CountriesContext } from '../contexts/CountriesContext';
 
 const Search = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const { isDarkTheme } = useContext(ThemeContext);
 
-  // Called each time user types in search input
+
+  const { isDarkTheme } = useContext(ThemeContext);
+  const { allCountryData, setFilteredCountries, searchValue, setSearchValue, setFilterValue } = useContext(CountriesContext);
+
   function handleSearch(e) {
-    const value = e.target.value;
-    setSearchQuery(value);
-    // If search field is blank, call fetchData with no args to trigger "all" API request
-    // if (!value) fetchData(); // TODO - extract function to context file
-    // Else call fetch data to filter by name/{name} of country
-    // else fetchData("name", value);
+    const searchQuery = e.target.value.toLowerCase();
+    // If search field is blank, reset filteredCountries to all
+    if (!searchQuery) setFilteredCountries(allCountryData);
+    // find country names that match value, set filteredCountries to these
+    const foundCountries = allCountryData.filter(country => {
+      return country.name.toLowerCase().includes(searchQuery);
+    });
+    setFilteredCountries(foundCountries);
+    setSearchValue(searchQuery);
+    setFilterValue("Filter by Region");
   }
 
   return (
@@ -22,7 +28,7 @@ const Search = () => {
       <input
         className="search__input"
         onChange={handleSearch}
-        value={searchQuery}
+        value={searchValue}
         placeholder="Search for a country..." />
       <ion-icon name="search"></ion-icon>
     </div>

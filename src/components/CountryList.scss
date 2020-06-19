@@ -1,6 +1,13 @@
-.country__list {
+@import "../global-styles.scss";
 
+.country__list {
+  min-height: 100vh;
 }
+
+.country__list.dark {
+  color: $white;
+}
+
 
 @media (min-width: 800px) {
 
