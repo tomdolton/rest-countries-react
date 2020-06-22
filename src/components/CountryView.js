@@ -2,10 +2,10 @@ import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom"
 import { ThemeContext } from "../contexts/ThemeContext";
 import { CountriesContext } from "../contexts/CountriesContext";
+import { filterCountryByName, getBorderCountryName } from "../api-utils";
 import Loading from "./Loading";
 import "./CountryView.scss";
 
-import { filterCountryByName, getBorderCountryName } from "../api-utils";
 
 const CountryView = ({ match }) => {
 
@@ -37,33 +37,38 @@ const CountryView = ({ match }) => {
             <ion-icon name="arrow-back" ></ion-icon>
             <span>Back</span>
           </Link>
-          <div>
+
+          <div className="country-view__content">
+
             <img className="country-view__flag" src={shownCountry.flag} alt={"Flag of " + shownCountry.name} />
-            <h2 className="country-view__title">{shownCountry.name}</h2>
-            <ul className="country-view__info">
-              <li><strong>Native name:</strong> {shownCountry.nativeName}</li>
-              <li><strong>Population:</strong> {shownCountry.population.toLocaleString()}</li>
-              <li><strong>Region:</strong> {shownCountry.region}</li>
-              <li><strong>Sub Region:</strong> {shownCountry.subregion}</li>
-              <li><strong>Capital:</strong> {shownCountry.capital}</li>
-            </ul>
 
-            <ul className="country-view__info">
-              <li><strong>Top Level Domain:</strong> {shownCountry.topLevelDomain}</li>
-              <li><strong>Currencies:</strong> {getListedData(shownCountry, "currencies")}</li>
-              <li><strong>Languages:</strong> {getListedData(shownCountry, "languages")}</li>
-            </ul>
+            <div className="country-view__textbox">
+              <h2 className="country-view__title">{shownCountry.name}</h2>
+              <ul className="country-view__list">
+                <li><strong>Native name:</strong> {shownCountry.nativeName}</li>
+                <li><strong>Population:</strong> {shownCountry.population.toLocaleString()}</li>
+                <li><strong>Region:</strong> {shownCountry.region}</li>
+                <li><strong>Sub Region:</strong> {shownCountry.subregion}</li>
+                <li><strong>Capital:</strong> {shownCountry.capital}</li>
+              </ul>
+              <ul className="country-view__list">
+                <li><strong>Top Level Domain:</strong> {shownCountry.topLevelDomain}</li>
+                <li><strong>Currencies:</strong> {getListedData(shownCountry, "currencies")}</li>
+                <li><strong>Languages:</strong> {getListedData(shownCountry, "languages")}</li>
+              </ul>
+              <div className="country-view__borders">
+                {shownCountry.borders.length > 0 && <h3 className="borders__title">Border Countries:</h3>}
+                <ul className="borders__list">
+                  {shownCountry.borders.map(country => {
+                    const countryName = getBorderCountryName(allCountryData, country)
+                    return <Link to={`/${countryName}`}><li>{countryName}</li></Link>
+                  })}
+                </ul>
+              </div>
+            </div>
 
-
-            {shownCountry.borders.length > 0 && <h3 className="borders__title">Border Countries:</h3>}
-
-            <ul className="country-view__borders">
-              {shownCountry.borders.map(country => {
-                const countryName = getBorderCountryName(allCountryData, country)
-                return <Link to={`/${countryName}`}><li>{countryName}</li></Link>
-              })}
-            </ul>
           </div>
+
         </div>
       }
     </div>

@@ -1,5 +1,6 @@
 @import "../global-styles.scss";
 
+
 .search {
   position: relative;
   color: $lm-input;
@@ -19,17 +20,20 @@
 .search__input {
   background-color: $white;
   font-size: 0.75rem;
-
+  line-height: 1;
   border: none;
   border-radius: 5px;
   width: 100%;
-  max-width: 345px;
   height: 50px;
   padding-left: 4rem;
   box-shadow: $box-shadow;
-
+  
   &:focus {
     font-size: 0.9rem;
+  }
+
+  @media (min-width: $bp-medium) {
+    font-size: 0.85rem;
   }
 }
 
@@ -38,4 +42,16 @@
   left: 2rem;
   top: 50%;
   transform: translateY(-50%);
+}
+
+@media (min-width: $bp-medium) {
+  
+  .search {
+    margin-bottom: 0;
+    flex: 1 1 auto;
+  }
+  
+  .search__input {
+    max-width: 480px;
+  }
 }

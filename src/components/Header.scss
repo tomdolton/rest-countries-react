@@ -1,9 +1,7 @@
 @import "../global-styles.scss";
 
-.header {
-  @include container;
-  @include flex;
 
+.header {
   color: $lm-text;
   background-color: $white;
   padding-top: 2rem;
@@ -11,7 +9,10 @@
   box-shadow: $box-shadow;
 }
 
-
+.header__container {
+  @include container;
+  @include flex;
+}
 
 .header.dark {
   color: $white;
@@ -19,8 +20,9 @@
 }
 
 .header__title {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 800;
+  line-height: 1;
 }
 
 .theme-btn {
@@ -29,10 +31,22 @@
   border: none;
   color: inherit;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 300;
+  line-height: 1;
 
   ion-icon {
     margin-right: 0.5rem;
+  }
+}
+
+@media (min-width: $bp-medium) {
+
+  .header__title {
+    font-size: 1.5rem;
+  }
+
+  .theme-btn {
+    font-size: 1rem;
   }
 }

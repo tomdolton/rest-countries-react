@@ -17,8 +17,6 @@ body {
   margin: 0;
 }
 
-
-
 h1, h2, h3, h4, p, ul, li {
   padding: 0;
   margin: 0;
@@ -41,14 +39,4 @@ img {
 
 ul {
   list-style: none;
-}
-
-.App {
-  color: $lm-text;
-  background-color: $lm-background;
-}
-
-.App.dark {
-  color: $white;
-  background-color: $dm-background;
 }

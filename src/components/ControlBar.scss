@@ -4,4 +4,10 @@
 .control-bar {
   padding-top: 1.5rem;
   padding-bottom: 2.5rem;
+
+  @media (min-width: $bp-medium) {
+    @include flex;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
 }

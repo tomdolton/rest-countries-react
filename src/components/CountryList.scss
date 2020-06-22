@@ -1,21 +1,26 @@
 @import "../global-styles.scss";
 
-.country__list {
+
+.country-list {
   min-height: 100vh;
+  padding-bottom: 75px;
+  text-align: center;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 265px);
+  justify-content: center;
+  align-content: start;
+  gap: 40px;
+
+  @media (min-width: 1360px) {
+    gap: 75px;
+  }
 }
 
-.country__list.dark {
+.country-list.dark {
   color: $white;
 }
 
-
-@media (min-width: 800px) {
-
-  .country__list {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(auto, 265px));
-    justify-content: space-between;
-    column-gap: 20px;
-    row-gap: 75px;
-  }
+.country-list__link {
+  display: inline-block;
 }

@@ -1,9 +1,12 @@
 @import "../global-styles.scss";
 
+
 .country-view {
   color: $lm-text;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
+  min-height: calc(100vh - 88px);
+  letter-spacing: 0.017em;
 }
 
 .country-view.dark {
@@ -17,6 +20,12 @@
   }
 }
 
+.country-view__container {
+  padding-left: 28px;
+  padding-right: 28px;
+  margin: 0 auto;
+  max-width: $max-width;
+}
 
 .country-view__back-btn {
   @include flex;
@@ -37,18 +46,17 @@
   }
 }
 
-
-.country-view__container {
-  padding-left: 28px;
-  padding-right: 28px;
+.country-view__content {
+  max-width: 320px;
   margin: 0 auto;
-  max-width: $max-width;
 }
 
 .country-view__flag {
   width: 100%;
+  max-width: 320px;
   max-height: 225px;
   margin-bottom: 3rem;
+  box-shadow: $box-shadow;
 }
 
 .country-view__title {
@@ -56,20 +64,28 @@
   margin-bottom: 2rem;
 }
 
-.country-view strong {
+.country-view__textbox {
+  font-size: 0.9rem;
+}
+
+.country-view__textbox strong {
   font-weight: 600;
 }
 
-.country-view__info {
+.country-view__list {
   margin-bottom: 3rem;
 
   li {
-    font-size: 0.9rem;
     margin-bottom: 1rem;
   }
 }
 
-.country-view__borders {
+
+//
+// Borders section
+// ==========================================================================
+
+.borders__list {
   @include flex(row, flex-start, flex-start);
   flex-wrap: wrap;
 
@@ -81,15 +97,87 @@
   li {
     background-color: $white;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 0.9em;
     box-shadow: $box-shadow;
     border-radius: 3px;
-    padding: 0.5rem 1rem;
+    padding: 0.45rem 1rem;
     min-width: 95px;
     max-width: 305px;
   }
 }
 
 .borders__title {
+  font-size: 0.9rem;
+  font-weight: 600;
   margin-bottom: 1.5rem;
+  min-width: 135px;
+}
+
+
+//
+// Medium screens
+// ==========================================================================
+
+@media (min-width: $bp-medium) {
+  
+  .country-view__content {
+    max-width: 560px;
+  }
+
+  .country-view__title {
+    font-size: 2.15rem;
+  }
+
+  .country-view__flag {
+    max-width: 560px;
+    max-height: 400px;
+  }
+
+  .country-view__textbox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+  }
+
+  .country-view__title {
+    grid-column: 1 / 3;
+  }
+
+  .country-view__textbox {
+    font-size: 1rem;
+  }
+
+  .country-view__borders {
+    grid-column: 1 / 3;
+    @include flex($justify: flex-start, $align: flex-start);
+  }
+
+  .borders__title {
+    font-size: 1rem;
+    margin: 4px 1rem 0 0;
+  }
+}
+
+
+//
+// Large screens
+// ==========================================================================
+
+@media (min-width: $bp-large) {
+
+  .country-view__content {
+    @include flex($justify: space-between);
+    max-width: none;
+  }
+
+  .country-view__flag {
+    flex-basis: content;
+    margin-right: 80px;
+    margin-bottom: 0;
+  }
+  
+  .country-view__textbox {
+    max-width: 600px;
+  }
 }

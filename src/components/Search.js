@@ -1,20 +1,20 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from "../contexts/ThemeContext";
-
-import "./Search.scss";
 import { CountriesContext } from '../contexts/CountriesContext';
+import "./Search.scss";
+
 
 const Search = () => {
 
-
   const { isDarkTheme } = useContext(ThemeContext);
   const { allCountryData, setFilteredCountries, searchValue, setSearchValue, setFilterValue } = useContext(CountriesContext);
+
 
   function handleSearch(e) {
     const searchQuery = e.target.value.toLowerCase();
     // If search field is blank, reset filteredCountries to all
     if (!searchQuery) setFilteredCountries(allCountryData);
-    // find country names that match value, set filteredCountries to these
+    // Find country names that match value, set filteredCountries to these
     const foundCountries = allCountryData.filter(country => {
       return country.name.toLowerCase().includes(searchQuery);
     });
@@ -22,6 +22,7 @@ const Search = () => {
     setSearchValue(searchQuery);
     setFilterValue("Filter by Region");
   }
+
 
   return (
     <div className={`search ${isDarkTheme ? "dark" : ""}`}>

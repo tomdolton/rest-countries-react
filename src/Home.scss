@@ -1,0 +1,15 @@
+@import "./global-styles.scss";
+
+
+.home {
+  background: $lm-background;
+}
+
+.home__container {
+  @include container;
+}
+
+.home.dark {
+  background: $dm-background;
+  padding-bottom: 2rem;
+}

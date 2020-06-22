@@ -1,19 +1,15 @@
 import React, { useEffect, useContext } from 'react';
-import "./App.scss";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { CountriesContext } from "./contexts/CountriesContext";
 import { fetchData } from "./api-utils";
-
-
 import Header from './components/Header.js';
 import Home from './components/Home.js';
 import CountryView from './components/CountryView';
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 
 function App() {
-  const { setAllCountryData, setFilteredCountries, setIsLoading } = useContext(CountriesContext);
 
+  const { setAllCountryData, setFilteredCountries, setIsLoading } = useContext(CountriesContext);
 
   // On App load
   useEffect(() => {
@@ -26,8 +22,6 @@ function App() {
       setIsLoading(false);
     })()
   }, [setAllCountryData, setFilteredCountries, setIsLoading]);
-
-
 
 
   return (

@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import { ThemeContext } from "../contexts/ThemeContext";
 import "./Country.scss";
 
+
 const Country = (props) => {
+
   const { isDarkTheme } = useContext(ThemeContext);
 
   return (

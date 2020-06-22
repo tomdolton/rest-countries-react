@@ -1,15 +1,17 @@
 @import "../global-styles.scss";
 
+
 .country {
   background-color: $white;
   color: $lm-text;
+  letter-spacing: 0.017em;
   width: 100%;
   max-width: 265px;
   height: 335px;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba($color: #000000,  $alpha: 0.2);
   overflow: hidden;
-  margin: 0 auto 2.5rem;
+  text-align: left;
 }
 
 .country.dark {
@@ -20,7 +22,6 @@
     border-bottom-color: $dm-elements;
   }
 }
-
 
 .country__flag {
   border-bottom: 1px solid #eee;
@@ -45,7 +46,6 @@
     font-weight: 600;
   }
 }
-
 
 .country__title {
   font-size: 1.15rem;

@@ -6,22 +6,20 @@ import Country from "./Country";
 import Loading from "./Loading";
 import "./CountryList.scss";
 
+
 const CountryList = () => {
 
   const { isDarkTheme } = useContext(ThemeContext);
   const { filteredCountries, setShownCountry, isLoading } = useContext(CountriesContext);
 
-  useEffect(() => {
-
-  }, [filteredCountries]);
-
   return (
-    <div className={`country__list ${isDarkTheme && "dark"}`}>
+    <div className={`country-list ${isDarkTheme && "dark"}`}>
       {isLoading
         ? <Loading />
         : filteredCountries.map(country => {
           return (
             <Link
+              className="country-list__link"
               to={`/${country.name}`}
               key={country.numericCode}
               onClick={() => {

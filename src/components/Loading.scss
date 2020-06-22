@@ -1,17 +1,19 @@
 @import "../global-styles.scss";
 
+
 .loading {
+  grid-column: 1 / -1;
   @include flex($justify: center, $align: flex-start);
   font-size: 0.9rem;
   height: 100vh;
   color: inherit;
+  margin-top: 110px;
 }
 
 .loading__icon {
   width: 20px;
   margin-right: 0.5rem;
   animation: rotate360 1s infinite linear;
-
   fill: $lm-text;
   path { stroke: $lm-text; }
 }

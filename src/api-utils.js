@@ -7,18 +7,11 @@ export const fetchData = async () => {
   if (response.status >= 200 && response.status <= 299) {
     const data = await response.json();
     return data;
-    // setCountries(data);
-    // setIsLoading(false);
-    // setIsFound(false);
   } else {
     // If no response, handle error
-    // setIsFound(true);
     console.log(response.status, response.statusText);
   }
 }
-
-
-
 
 
 export const getBorderCountryName = (countries, code) => {
@@ -33,7 +26,5 @@ export const filterCountryByName = (countries, name) => {
   const displayedCountry = countries.filter((country) => {
     return country.name === name;
   });
-
   return displayedCountry[0];
-
 }
