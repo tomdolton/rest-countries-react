@@ -17,6 +17,10 @@
 .header.dark {
   color: $white;
   background-color: $dm-elements;
+
+  .theme-btn svg {
+    fill: $white;
+  }
 }
 
 .header__title {
@@ -35,7 +39,9 @@
   font-weight: 300;
   line-height: 1;
 
-  ion-icon {
+  svg {
+    fill: $lm-text;
+    width: 13px;
     margin-right: 0.5rem;
   }
 }
@@ -48,5 +54,9 @@
 
   .theme-btn {
     font-size: 1rem;
+
+    svg {
+      width: 16px;
+    }
   }
 }

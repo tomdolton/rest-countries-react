@@ -12,8 +12,8 @@
     color: $white;
     background-color: $dm-elements;
   }
-  ion-icon {
-    color: $white;
+  .search__icon {
+    fill: $white;
   }
 }
 
@@ -37,7 +37,8 @@
   }
 }
 
-.search ion-icon {
+.search__icon {
+  fill: $lm-text;
   position: absolute;
   left: 2rem;
   top: 50%;
