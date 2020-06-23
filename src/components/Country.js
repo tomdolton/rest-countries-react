@@ -9,7 +9,7 @@ const Country = (props) => {
 
   return (
     <div className={`country ${isDarkTheme && "dark"}`}>
-      <img className="country__flag" src={props.flag} alt="Flag" />
+      <img className="country__flag" src={props.flag} alt={`Flag of ${props.name}`} />
       <div className="country__text">
         <h2 className="country__title">{props.name}</h2>
         <p><strong>Population: </strong>{props.population}</p>
